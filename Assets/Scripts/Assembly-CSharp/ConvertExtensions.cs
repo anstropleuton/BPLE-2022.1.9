@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using UnityEngine;
 
 public static class ConvertExtensions
@@ -11,9 +12,9 @@ public static class ConvertExtensions
 
 		public PartTypeConverter()
 		{
-			m_partTypeTable = new BasePart.PartType[49];
-			m_sortedPartTypeTable = new SortedPartType[51];
-			for (int i = 0; i < 49; i++)
+			m_partTypeTable = new BasePart.PartType[(int)SortedPartType.MAX];
+			m_sortedPartTypeTable = new SortedPartType[(int)BasePart.PartType.MAX];
+			for (int i = 0; i < (int)SortedPartType.MAX; i++)
 			{
 				SortedPartType sortedPartType = (SortedPartType)i;
 				if (!Enum.TryParse<BasePart.PartType>(sortedPartType.ToString(), out var result))
@@ -22,7 +23,7 @@ public static class ConvertExtensions
 				}
 				m_partTypeTable[i] = result;
 			}
-			for (int j = 0; j < 51; j++)
+			for (int j = 0; j < (int)BasePart.PartType.MAX; j++)
 			{
 				BasePart.PartType partType = (BasePart.PartType)j;
 				if (!Enum.TryParse<SortedPartType>(partType.ToString(), out var result2))
@@ -150,43 +151,43 @@ public static class ConvertExtensions
 		}
 		if (typeFromHandle == typeof(sbyte))
 		{
-			return (T)(object)sbyte.Parse(str);
+			return (T)(object)sbyte.Parse(str, CultureInfo.InvariantCulture);
 		}
 		if (typeFromHandle == typeof(byte))
 		{
-			return (T)(object)byte.Parse(str);
+			return (T)(object)byte.Parse(str, CultureInfo.InvariantCulture);
 		}
 		if (typeFromHandle == typeof(short))
 		{
-			return (T)(object)short.Parse(str);
+			return (T)(object)short.Parse(str, CultureInfo.InvariantCulture);
 		}
 		if (typeFromHandle == typeof(ushort))
 		{
-			return (T)(object)ushort.Parse(str);
+			return (T)(object)ushort.Parse(str, CultureInfo.InvariantCulture);
 		}
 		if (typeFromHandle == typeof(int))
 		{
-			return (T)(object)int.Parse(str);
+			return (T)(object)int.Parse(str, CultureInfo.InvariantCulture);
 		}
 		if (typeFromHandle == typeof(uint))
 		{
-			return (T)(object)uint.Parse(str);
+			return (T)(object)uint.Parse(str, CultureInfo.InvariantCulture);
 		}
 		if (typeFromHandle == typeof(long))
 		{
-			return (T)(object)long.Parse(str);
+			return (T)(object)long.Parse(str, CultureInfo.InvariantCulture);
 		}
 		if (typeFromHandle == typeof(ulong))
 		{
-			return (T)(object)ulong.Parse(str);
+			return (T)(object)ulong.Parse(str, CultureInfo.InvariantCulture);
 		}
 		if (typeFromHandle == typeof(float))
 		{
-			return (T)(object)float.Parse(str);
+			return (T)(object)float.Parse(str, CultureInfo.InvariantCulture);
 		}
 		if (typeFromHandle == typeof(double))
 		{
-			return (T)(object)double.Parse(str);
+			return (T)(object)double.Parse(str, CultureInfo.InvariantCulture);
 		}
 		throw new FormatException();
 	}
@@ -311,8 +312,8 @@ public static class ConvertExtensions
 	public static Vector2 ToVector2(this string str)
 	{
 		string[] array = str.Substring(1, str.Length - 2).Split(',');
-		float x = float.Parse(array[0]);
-		float y = float.Parse(array[1]);
+		float x = float.Parse(array[0], CultureInfo.InvariantCulture);
+		float y = float.Parse(array[1], CultureInfo.InvariantCulture);
 		return new Vector2(x, y);
 	}
 
@@ -334,9 +335,9 @@ public static class ConvertExtensions
 	public static Vector3 ToVector3(this string str)
 	{
 		string[] array = str.Substring(1, str.Length - 2).Split(',');
-		float x = float.Parse(array[0]);
-		float y = float.Parse(array[1]);
-		float z = float.Parse(array[2]);
+		float x = float.Parse(array[0], CultureInfo.InvariantCulture);
+		float y = float.Parse(array[1], CultureInfo.InvariantCulture);
+		float z = float.Parse(array[2], CultureInfo.InvariantCulture);
 		return new Vector3(x, y, z);
 	}
 

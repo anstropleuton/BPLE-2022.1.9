@@ -11,18 +11,18 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e4486f1282953ec0e6aa4c1db9249b8, type: 3}
   m_Name: ResourceData
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   Prefabs:
-  - {fileID: 1709254077376921, guid: cf2ba80332ad5d64884c16aebf766e33, type: 2}
-  - {fileID: 1709254077376921, guid: 01258a8b4c518ea429c983e8acc05138, type: 2}
-  - {fileID: 1709254077376921, guid: 4d61b28398d01584eb4a0c5400746a8d, type: 2}
-  - {fileID: 1709254077376921, guid: 3f0b9cc7df0b56541949aaf1cbb0f7b4, type: 2}
-  - {fileID: 1709254077376921, guid: 8fdde1cd5779d054db8600463fef4e3c, type: 2}
-  - {fileID: 1709254077376921, guid: 12d006b8cb1a83c4599ce30bd069f24b, type: 2}
-  - {fileID: 1709254077376921, guid: e743e6716a4d490489be28ccdb3bc5df, type: 2}
-  - {fileID: 1709254077376921, guid: 97197215b5a4fbb4b9a2bd6007b9b1b6, type: 2}
-  - {fileID: 1709254077376921, guid: 28d4adeecbd03964bbdd58f725879309, type: 2}
-  - {fileID: 1709254077376921, guid: 81bd28d0f770b8d4fa568e8dda568c25, type: 2}
+  - {fileID: 1709254077376921, guid: cf2ba80332ad5d64884c16aebf766e33, type: 3}
+  - {fileID: 1709254077376921, guid: 01258a8b4c518ea429c983e8acc05138, type: 3}
+  - {fileID: 1709254077376921, guid: 4d61b28398d01584eb4a0c5400746a8d, type: 3}
+  - {fileID: 1709254077376921, guid: 3f0b9cc7df0b56541949aaf1cbb0f7b4, type: 3}
+  - {fileID: 1709254077376921, guid: 8fdde1cd5779d054db8600463fef4e3c, type: 3}
+  - {fileID: 1709254077376921, guid: 12d006b8cb1a83c4599ce30bd069f24b, type: 3}
+  - {fileID: 1709254077376921, guid: e743e6716a4d490489be28ccdb3bc5df, type: 3}
+  - {fileID: 1709254077376921, guid: 97197215b5a4fbb4b9a2bd6007b9b1b6, type: 3}
+  - {fileID: 1709254077376921, guid: 28d4adeecbd03964bbdd58f725879309, type: 3}
+  - {fileID: 1709254077376921, guid: 81bd28d0f770b8d4fa568e8dda568c25, type: 3}
   Fonts:
   - {fileID: 12800000, guid: 6f815898b0bcfc2458295ac828923736, type: 3}
   - {fileID: 12800000, guid: 008629de2b895134daf816af781d86d0, type: 3}
@@ -48,6 +48,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f9931ffdb66d7c84d905d42d90367d78, type: 2}
   - {fileID: 2100000, guid: 8c807d7fa4a1531419ea52220c6627d1, type: 2}
   - {fileID: 2100000, guid: a5ce488ee06a31140b10a5db14d04e50, type: 2}
+  - {fileID: 2100000, guid: 0c7e1056f2ad53547803c6537fb05726, type: 2}
   TextAssets:
   - {fileID: 4900000, guid: ae13d9b9223ef39408446e7efff0c1de, type: 3}
   - {fileID: 4900000, guid: 06eaf738d8fdab44c99bcf79849ed026, type: 3}

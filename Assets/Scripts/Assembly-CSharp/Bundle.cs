@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -148,7 +149,7 @@ public class Bundle : MonoBehaviour
 		{
 			string assetBundleId = assetBundles[i].assetBundleId;
 			BundleObject bundleObject = ((!bundleObjects.ContainsKey(assetBundleId)) ? new BundleObject(assetBundleId, "unity3d", assetBundles[i].loadAtStart, string.Empty) : bundleObjects[assetBundleId]);
-			string bundleLocation = Path.Combine(Application.streamingAssetsPath, "AssetBundles/" + bundleObject.BundleFileName);
+			string bundleLocation = GetBundleLocation(bundleObject.BundleFileName);
 			bundleObject.SetBundleLocation(bundleLocation);
 			if (!bundleObjects.ContainsKey(assetBundleId))
 			{
@@ -321,5 +322,17 @@ public class Bundle : MonoBehaviour
 				UnloadAssetBundle(assetBundles[i].assetBundleId, unloadAllLoadedObjects: true);
 			}
 		}
+	}
+
+	private static string GetBundleLocation(string bundleFileName)
+	{
+		string fileNameLower = bundleFileName.ToLowerInvariant();
+#if UNITY_EDITOR
+		string folderName = EditorUserBuildSettings.activeBuildTarget.ToString();
+
+		return Path.Combine(Application.dataPath.Substring(0, Application.dataPath.LastIndexOf('/')), "Library", "BuiltAssetBundles", folderName, fileNameLower);
+#else
+		return Path.Combine(Application.streamingAssetsPath, "AssetBundles", fileNameLower);
+#endif
 	}
 }

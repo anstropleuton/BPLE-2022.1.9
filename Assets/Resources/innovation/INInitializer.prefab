@@ -42,8 +42,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8460f1fd08c4d28bd13770e53573ecd, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_splashes:
   - {fileID: 1709254077376921, guid: 76ab700660a7e114c81c6bcbdebec920, type: 2}
   m_prefabs:

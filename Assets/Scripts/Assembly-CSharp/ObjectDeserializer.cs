@@ -17,7 +17,7 @@ public class ObjectDeserializer
 
 		public string value;
 
-		public int IntegerValue => int.Parse(value);
+		public int IntegerValue => int.Parse(value, CultureInfo.InvariantCulture);
 
 		public float FloatValue => float.Parse(value, CultureInfo.InvariantCulture);
 
@@ -403,7 +403,18 @@ public class ObjectDeserializer
 		PropertyInfo property = obj.GetType().GetProperty(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 		if (property != null)
 		{
-			property.SetValue(obj, value, null);
+			MethodInfo setter = property.GetSetMethod(true);
+
+			if (setter != null)
+			{
+				setter.Invoke(obj, new object[] { value });
+			}
+			else
+			{
+				Debug.LogWarning(
+					$"No setter: {obj.GetType().FullName}.{name}"
+				);
+			}
 			return;
 		}
 		if (obj is Behaviour && name == "m_Enabled")
@@ -688,7 +699,7 @@ public class ObjectDeserializer
 				{
 					continue;
 				}
-				i = int.Parse(propertyData.name);
+				i = int.Parse(propertyData.name, CultureInfo.InvariantCulture);
 				while (reader.GetIndentation() == depth + 1)
 				{
 					propertyData = reader.ReadProperty();
@@ -735,7 +746,7 @@ public class ObjectDeserializer
 			PropertyData propertyData = reader.ReadProperty();
 			if (propertyData.type == "Element")
 			{
-				int num3 = int.Parse(propertyData.name);
+				int num3 = int.Parse(propertyData.name, CultureInfo.InvariantCulture);
 				Type type = list.GetType().GetGenericArguments()[0];
 				if (type.IsValueType)
 				{

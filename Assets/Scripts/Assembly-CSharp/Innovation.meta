@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Assembly-CSharp/Innovation.meta
 guid: d4424c99afd7c4a49a8724bfd12dc935
+========
+guid: 36007bd5e7cc50e41966d518efd59096
+>>>>>>>> f20b8c36 (Squashed changes from base repository):Assets/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

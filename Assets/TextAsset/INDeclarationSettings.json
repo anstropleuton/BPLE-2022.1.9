@@ -62,7 +62,7 @@
 				"mainType": "Boolean",
 				"genericArguments": []
 			},
-			"value": false
+			"value": true
 		},
 		{
 			"name": "UnlockSandBoxes",
@@ -70,7 +70,7 @@
 				"mainType": "Boolean",
 				"genericArguments": []
 			},
-			"value": false
+			"value": true
 		},
 		{
 			"name": "UnlockCustomParts",

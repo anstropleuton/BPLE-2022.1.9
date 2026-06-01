@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using UnityEngine;
 
 public static class INUnity
@@ -20,6 +22,8 @@ public static class INUnity
 
 	public static string VersionText { get; private set; }
 
+	public static int BuildVersion { get; private set; }
+
 	public static string DataPath { get; private set; }
 
 	public static string SettingsPath { get; private set; }
@@ -38,10 +42,14 @@ public static class INUnity
 
 	static INUnity()
 	{
-		Version = Version.Parse(Application.version);
 		VersionText = Application.version;
-		DataPath = Application.persistentDataPath;
-		SettingsPath = Application.persistentDataPath + "/Settings";
+		string[] array = VersionText.Split('-', 2);
+		Version = Version.Parse(array[0]);
+		BuildVersion = -1;
+		if (array.Length > 1)
+		{
+			BuildVersion = int.Parse(array[1], CultureInfo.InvariantCulture);
+		}
 		SystemLanguage systemLanguage = Application.systemLanguage;
 		if (systemLanguage == SystemLanguage.Chinese || systemLanguage == SystemLanguage.ChineseSimplified || systemLanguage == SystemLanguage.ChineseTraditional)
 		{
@@ -54,6 +62,12 @@ public static class INUnity
 		ArialFont = Resources.GetBuiltinResource<Font>("Arial.ttf");
 		QuadMesh = Resources.GetBuiltinResource<Mesh>("Quad.fbx");
 		s_resources = new Dictionary<(string, string), UnityEngine.Object>();
+	}
+
+	public static void InitializeRoot()
+	{
+		DataPath = INFileSystem.Root;
+		SettingsPath = Path.Combine(DataPath, "Settings");
 	}
 
 	public static void Initialize(ResourceData data)
