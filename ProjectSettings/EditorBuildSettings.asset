@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/SplashScreen.unity
+    guid: 9c2dc9b24d03844409e5b8a682d6cd7c
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/MainMenu.unity
+    guid: a8f8948eb936b3a4a9dd08ff2dcbd948
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode1_End.unity
+    guid: 23f00242b2255d84dbed04530afebdbc
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode1_Start.unity
+    guid: 04a8071d38fe3e044a709475c2db2a15
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode2_End.unity
+    guid: 0430434d13f139246aa121f55333606b
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode2_Start.unity
+    guid: f6d5f8c476b67564390f7e10f608747e
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode3_End.unity
+    guid: aaae7c1b9357f8d428164eeafa9b8e68
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode3_Start.unity
+    guid: 62f153717420e0442bec546e6ebcd14c
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/LevelStub.unity
+    guid: 3dc0758ce625975488807b14a731ca73
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/LevelSelection/Episode1LevelSelection.unity
+    guid: 21fafe98a2de6e84781591c485a11fb1
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/LevelSelection/Episode2LevelSelection.unity
+    guid: e735064779d987546b21db8b26d9ced8
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/LevelSelection/Episode3LevelSelection.unity
+    guid: d677bf7cbccab034483b89ad47fde18e
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/LevelSelection/Episode4LevelSelection.unity
+    guid: 7666d4e7096584b43aec57f29d9fc70a
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/LevelSelection/Episode5LevelSelection.unity
+    guid: 059ab4374bccb5046af20e4cc230f4c6
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/LevelSelection/Episode6LevelSelection.unity
+    guid: aaad1c905680d4a4398be965e76742b8
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/Prefabs/EpisodeSelection.unity
+    guid: ec1a81ac7ae4eeb48ac8014a92cb172b
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/LevelSelection/SandboxLevelSelection.unity
+    guid: 53ca0cf50167a9341a0565a34bc53c4b
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/LevelSelection/RaceLevelSelection.unity
+    guid: 01a4cd1f12e61474d9606298903f9dae
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/CheatsPanel.unity
+    guid: f74fde71cb9fe6f4c9c327274cedc30a
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/StarLevelTransition.unity
+    guid: 21bf7639a64c80d4db253bb5a20bee79
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode2a_Start.unity
+    guid: 5096ca442ca5c92488ceb345f0c1e660
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/KingPigFeed.unity
+    guid: 5ca656ac59a17ae48bebd9d9b9249ef4
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode2a_End.unity
+    guid: bf8eed8a91e723a4e9076ab2f08ca9a5
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode5_Start.unity
+    guid: 03f67cfaf4fb0b843946b9a58bdbbfb8
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode5_Mid.unity
+    guid: 13fae0ff38f8fdd4a842b326181d577b
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode5_End.unity
+    guid: 24aaeb6e7993727438e2feeabbadd811
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode6_Start.unity
+    guid: ff80cf4ed4ea18a4f9cdb151027625f0
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode6_Mid.unity
+    guid: 1de927c3dc94a854e8ebbe999b99b789
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/Episode6_End.unity
+    guid: a2d571665b1b90d4c8d69940ee053b16
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/Workshop.unity
+    guid: 93782835639b71f4cba5cf60fdc75f8c
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/DailyChallenge.unity
+    guid: 1d0e4de3f367543419eeadf1550b9ab0
+  - enabled: 1
+    path: Assets/Scene/Scenes/UI/CakeRaceMenu.unity
+    guid: 26982ded20759874aa862ad66e1ad01b
+  - enabled: 1
+    path: Assets/Scene/Scenes/Cutscenes/CakeRaceIntro.unity
+    guid: 4a412ff76c5b22a4bab58af4f5714ab8
+  m_configObjects: {}

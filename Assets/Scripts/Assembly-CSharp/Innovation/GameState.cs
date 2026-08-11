@@ -1,0 +1,30 @@
+namespace Innovation
+{
+	public enum GameState
+	{
+		Undefined,
+		Building,
+		Preview,
+		PreviewMoving,
+		PreviewWhileBuilding,
+		PreviewWhileRunning,
+		Running,
+		Continue,
+		Completed,
+		PausedWhileRunning,
+		PausedWhileBuilding,
+		IngamePurchase,
+		AutoBuilding,
+		TutorialBook,
+		ShowingUnlockedParts,
+		Purchasing,
+		Snapshot,
+		MechanicInfoScreen,
+		MechanicGiftScreen,
+		SuperAutoBuilding,
+		CustomizingPart,
+		LootCrateOpening,
+		CakeRaceExploding,
+		CakeRaceCompleted
+	}
+}

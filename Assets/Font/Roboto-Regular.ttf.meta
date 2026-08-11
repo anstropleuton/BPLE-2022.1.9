@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 21780fa85d8d56f47a0855466a1bda80
+timeCreated: 1785682601
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  externalObjects: {}
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Roboto
+  - Source Han Sans CN
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 991f266f4d02cf64d92b39526e37ea34, type: 3}
+  - {fileID: 12800000, guid: b9612b451c0fd994b9d63dae5da43ee9, type: 3}
+  customCharacters:
+  fontRenderingMode: 0
+  output:
+    hasEmptyFontData: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData:
+  assetBundleName:
+  assetBundleVariant:

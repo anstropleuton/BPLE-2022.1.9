@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4724804207875695}
+  - component: {fileID: 114618682377417806}
+  m_Layer: 0
+  m_Name: atlasmaterials
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1730242686860875
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4703437598541787}
+  - component: {fileID: 33884547391421755}
+  - component: {fileID: 23099118695303065}
+  m_Layer: 10
+  m_Name: BadPiggies_Splash_Early
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4724804207875695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4703437598541787}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114618682377417806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566b00219e787297530c860d8077c29a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  emptyTexture: {fileID: 2800000, guid: bb024eb1eb0ce554da4fda9f4a1f7631, type: 3}
+  loadingScreen: {fileID: 1730242686860875}
+  normalMaterials:
+  - {fileID: 2100000, guid: 79b3e56d3903b21459193205b810a87b, type: 2}
+  - {fileID: 2100000, guid: 5d32ac40dcf30b24faa7d2eb0296d6eb, type: 2}
+  - {fileID: 2100000, guid: f2b9645c40597a54e9707520e4c35827, type: 2}
+  - {fileID: 2100000, guid: 96925436af8da3a499e8ecb385a5830c, type: 2}
+  - {fileID: 2100000, guid: f9931ffdb66d7c84d905d42d90367d78, type: 2}
+  dimmedRenderQueueMaterials:
+  - {fileID: 2100000, guid: 47e19addd2f621b428d4c9b746484333, type: 2}
+  - {fileID: 2100000, guid: 7dfdc268057df9444932b7e42275a88d, type: 2}
+  - {fileID: 2100000, guid: e5e26bde2ab05574ebe15359e42593ad, type: 2}
+  renderQueueMaterials:
+  - {fileID: 2100000, guid: f0c14cd2d615c4b4b96f2159c9cf2547, type: 2}
+  - {fileID: 2100000, guid: ffecedc0dc1c1174e86555884d89700a, type: 2}
+  - {fileID: 2100000, guid: b762b7d64bc2ace458ff8c39faa42696, type: 2}
+  partQueueZMaterials:
+  - {fileID: 2100000, guid: c49f2226fa7b8c147a9dd22ad5669d04, type: 2}
+  - {fileID: 2100000, guid: 2fa35479620b7494d93bdc002d8fe7df, type: 2}
+  - {fileID: 2100000, guid: 834bd25c51244f04fa2a6fc706aae0c1, type: 2}
+  grayMaterials:
+  - {fileID: 2100000, guid: 330b61470d46ad947bc725626f539e25, type: 2}
+  - {fileID: 2100000, guid: a13977023ecf5e44ea9445309d35a35b, type: 2}
+  - {fileID: 2100000, guid: 283d91d620611b74ca647358ab487494, type: 2}
+  - {fileID: 2100000, guid: 29e8a172117b4314eb7c2efec4298628, type: 2}
+  - {fileID: 2100000, guid: f7bf6ba903caafe4494abdc31355316d, type: 2}
+  shineMaterials:
+  - {fileID: 2100000, guid: 54a9e56baacc9c943a7cb59228b4178c, type: 2}
+  - {fileID: 2100000, guid: 8d78d74198bff7841875e463cb3620ae, type: 2}
+  - {fileID: 2100000, guid: 5d2f55efad169db40ae78e9a37f82a83, type: 2}
+  - {fileID: 2100000, guid: 69b50db8ecc10314387c1418850f6bec, type: 2}
+  - {fileID: 2100000, guid: e6a345555526e7144bd196875a48ff9a, type: 2}
+  alphaMaterials:
+  - {fileID: 2100000, guid: f4cac2ad0a0684748ab8217adf91ad07, type: 2}
+  - {fileID: 2100000, guid: 4a675c8756707094eaf7fbeceb66e6f9, type: 2}
+  - {fileID: 2100000, guid: 78baaf701d08eb446b1fcd9708e7300a, type: 2}
+  - {fileID: 2100000, guid: 0e503cfeb5d853d44af90acd9499eeaa, type: 2}
+  - {fileID: 2100000, guid: a82af45fc6e22c742aab1583ea44be21, type: 2}
+--- !u!4 &4703437598541787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730242686860875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 18, y: 10.1, z: 1.12}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4724804207875695}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!33 &33884547391421755
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730242686860875}
+  m_Mesh: {fileID: 4300000, guid: 1342b289339e67942aaf13d735675ff3, type: 2}
+--- !u!23 &23099118695303065
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730242686860875}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b79557877e8b24b4a9d72f7846cd4d39, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1168868595
+  m_SortingLayer: 1
+  m_SortingOrder: 1000
+  m_AdditionalVertexStreams: {fileID: 0}
