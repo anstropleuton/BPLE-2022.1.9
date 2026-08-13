@@ -26,7 +26,7 @@ This repository maintains changes made to that repository, as well as other chan
     - Windows (x32 and x64)
     - Linux (x64)
     - Android (ARM32 and ARM64)
-- Clone this repository `git clone --depth=1 https://github.com/anstropleuton/BPLE.git`
+- Clone this repository `git clone --depth=1 https://github.com/anstropleuton/BPLE-2022.1.9.git`
 - Open the project from Unity
 - Build AssetBundles using my custom editor script menu BPLE > Bundle > All (or for the current build target such as Android)
 - Build with my custom editor script menu BPLE > Build > All (or for the current build target such as Android) \* \*\*
