@@ -21,6 +21,8 @@ public static class Orchestrate
 
 	public static readonly string QueuePath = Path.Combine(ProjectPath, "Temp", "BuildQueue.txt");
 
+	public static readonly bool UseIL2CPP = false;
+
 	public enum Platform
 	{
 		WindowsX32,
@@ -268,12 +270,18 @@ public static class Orchestrate
 		switch (platform)
 		{
 			case Platform.AndroidArm:
-				PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARMv7 | AndroidArchitecture.ARM64;
+				if (UseIL2CPP)
+					PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARMv7 | AndroidArchitecture.ARM64;
+				else
+					PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARMv7;
 				break;
 			case Platform.AndroidIntel:
 				PlayerSettings.Android.targetArchitectures = AndroidArchitecture.X86 | AndroidArchitecture.X86_64;
 				break;
 		}
+
+		PlayerSettings.SetScriptingBackend(BuildPipeline.GetBuildTargetGroup(target),
+			UseIL2CPP ? ScriptingImplementation.IL2CPP : ScriptingImplementation.Mono2x);
 
 		BuildReport report = BuildPipeline.BuildPlayer(options);
 		if (report.summary.result != BuildResult.Succeeded)
