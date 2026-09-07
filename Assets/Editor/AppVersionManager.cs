@@ -18,7 +18,7 @@ public class AppVersionManager : EditorWindow
 		foreach (Orchestrate.Platform platform in Enum.GetValues(typeof(Orchestrate.Platform)))
 		{
 			PlayerSettings.companyName = "BPLE";
-			PlayerSettings.productName = $"BPLE {PlayerSettings.bundleVersion}";
+			PlayerSettings.productName = $"BPLE TV {PlayerSettings.bundleVersion}";
 			PlayerSettings.SetApplicationIdentifier(
 				BuildPipeline.GetBuildTargetGroup(Orchestrate.GetTargetFromPlatform(platform)),
 				GetAppId(PlayerSettings.bundleVersion)
@@ -28,7 +28,7 @@ public class AppVersionManager : EditorWindow
 
 	static string GetAppId(string version)
 	{
-		return $"com.bple.bple_{version.Replace('-', '_').Replace('.', '_')}";
+		return $"com.bple.bple_tv_{version.Replace('-', '_').Replace('.', '_')}";
 	}
 
 	void OnGUI()
