@@ -10,8 +10,8 @@ using ImageMagick;
 
 if (!OperatingSystem.IsWindows())
 {
-    Console.WriteLine("This script must be ran on Windows");
-    Environment.Exit(1);
+	Console.WriteLine("This script must be ran on Windows");
+	Environment.Exit(1);
 }
 
 if (!Common.Initialize())
@@ -26,8 +26,8 @@ var iconIcoPath = Path.Combine(Common.TempPath, "icon.ico");
 
 using (var image = new MagickImage(File.ReadAllBytes(iconOrgPath)))
 {
-    image.Resize(256, 256);
-    image.Write(iconIcoPath, MagickFormat.Ico);
+	image.Resize(256, 256);
+	image.Write(iconIcoPath, MagickFormat.Ico);
 }
 
 // Download tools
@@ -37,31 +37,31 @@ using (var image = new MagickImage(File.ReadAllBytes(iconOrgPath)))
 var ipArchivePath = Path.Combine(Common.TempPath, "ip.zip");
 if (!File.Exists(ipArchivePath))
 {
-    var ipUrl = "https://rathlev-home.de/tools/download/innounpacker.zip";
-    if (!Common.DownloadFile(ipUrl, ipArchivePath))
-    {
-	    Environment.Exit(1);
-    }
+	var ipUrl = "https://rathlev-home.de/tools/download/innounpacker.zip";
+	if (!Common.DownloadFile(ipUrl, ipArchivePath))
+	{
+		Environment.Exit(1);
+	}
 }
 
 var ipExtractPath = Path.Combine(Common.TempPath, "ip");
 var ipBinPath = Path.Combine(ipExtractPath, "innounp.exe");
 if (!Directory.Exists(ipExtractPath) || !File.Exists(ipBinPath))
 {
-    Directory.CreateDirectory(ipExtractPath);
+	Directory.CreateDirectory(ipExtractPath);
 
-    ZipFile.ExtractToDirectory(ipArchivePath, ipExtractPath, true);
+	ZipFile.ExtractToDirectory(ipArchivePath, ipExtractPath, true);
 }
 
 // Inno Setup
 var isArchivePath = Path.Combine(Common.TempPath, "is.exe"); // Treating exe as archive
 if (!File.Exists(isArchivePath))
 {
-    var isUrl = "https://github.com/jrsoftware/issrc/releases/download/is-6_7_3/innosetup-6.7.3.exe";
-    if (!Common.DownloadFile(isUrl, isArchivePath))
-    {
-	    Environment.Exit(1);
-    }
+	var isUrl = "https://github.com/jrsoftware/issrc/releases/download/is-6_7_3/innosetup-6.7.3.exe";
+	if (!Common.DownloadFile(isUrl, isArchivePath))
+	{
+		Environment.Exit(1);
+	}
 }
 
 var isExtractPath = Path.Combine(Common.TempPath, "is");
@@ -77,47 +77,47 @@ if (!Directory.Exists(isExtractPath) || !File.Exists(isBinPath))
 
 foreach (var (current, arch) in ((string, string)[])[("WindowsX32", "x32"), ("WindowsX64", "x64")])
 {
-    var buildPath = Path.Combine(Common.BuildsPath, current);
+	var buildPath = Path.Combine(Common.BuildsPath, current);
 
-    if (!Directory.Exists(buildPath))
-    {
-        Console.WriteLine($"Warning: Build for {current} does not exist: {buildPath}; Skipping it");
-        continue;
-    }
+	if (!Directory.Exists(buildPath))
+	{
+		Console.WriteLine($"Warning: Build for {current} does not exist: {buildPath}; Skipping it");
+		continue;
+	}
 
-    Console.WriteLine($"Preparing {current}");
+	Console.WriteLine($"Preparing {current}");
 
-    // Exclude backup
-    var stagingPath = Path.Combine(Common.TempPath, ".stage", current);
-    Common.StageBuild(buildPath, stagingPath);
+	// Exclude backup
+	var stagingPath = Path.Combine(Common.TempPath, ".stage", current);
+	Common.StageBuild(buildPath, stagingPath);
 
-    // Hacks
-    var ggmPath = Path.Combine(stagingPath, $"BPLE-{Common.BuildVersion}_Data", "globalgamemanagers");
-    Common.PatchGgm(ggmPath);
+	// Hacks
+	var ggmPath = Path.Combine(stagingPath, $"BPLE-{Common.BuildVersion}_Data", "globalgamemanagers");
+	Common.PatchGgm(ggmPath);
 
-    // Zip
-    var buildZip = Path.Combine(Common.PublishPath, $"BPLE-{Common.BuildVersion}-windows-{arch}.zip");
-    if (File.Exists(buildZip)) File.Delete(buildZip);
-    Console.WriteLine($"Building {buildZip}");
-    ZipFile.CreateFromDirectory(stagingPath, buildZip);
+	// Zip
+	var buildZip = Path.Combine(Common.PublishPath, $"BPLE-{Common.BuildVersion}-windows-{arch}.zip");
+	if (File.Exists(buildZip)) File.Delete(buildZip);
+	Console.WriteLine($"Building {buildZip}");
+	ZipFile.CreateFromDirectory(stagingPath, buildZip);
 
-    // Installer
-    var buildExe = Path.Combine(Common.PublishPath, $"BPLE-{Common.BuildVersion}-windows-{arch}.exe");
-    Console.WriteLine($"Building {buildExe}");
+	// Installer
+	var buildExe = Path.Combine(Common.PublishPath, $"BPLE-{Common.BuildVersion}-windows-{arch}.exe");
+	Console.WriteLine($"Building {buildExe}");
 
-    var allowedArch = arch switch
-    {
-        "x32" => "x86compatible",
-        "x64" => "x64compatible",
-        _ => throw new UnreachableException()
-    };
+	var allowedArch = arch switch
+	{
+		"x32" => "x86compatible",
+		"x64" => "x64compatible",
+		_ => throw new UnreachableException()
+	};
 
-    var imageFile = Path.Combine(Common.ToolsPath, "Background.png");
-    var smallImageFile = Path.Combine(Common.ToolsPath, "Icon.png");
+	var imageFile = Path.Combine(Common.ToolsPath, "Background.png");
+	var smallImageFile = Path.Combine(Common.ToolsPath, "Icon.png");
 
-    var scriptPath = Path.Combine(Common.TempPath, "installer.iss");
-    File.WriteAllText(scriptPath,
-        $$"""
+	var scriptPath = Path.Combine(Common.TempPath, "installer.iss");
+	File.WriteAllText(scriptPath,
+		$$"""
 		  [Setup]
 		  AppId=BPLE-{{Common.BuildVersion}}
 		  AppName=BPLE {{Common.BuildVersion}}
@@ -130,9 +130,8 @@ foreach (var (current, arch) in ((string, string)[])[("WindowsX32", "x32"), ("Wi
 		  PrivilegesRequiredOverridesAllowed=dialog commandline
 
 		  DefaultDirName={autopf}\BPLE {{Common.BuildVersion}}
-		  DefaultGroupName=BPLE
-		  AllowNoIcons=yes
 		  AllowRootDirectory=yes
+		  DisableProgramGroupPage=yes
 
 		  SolidCompression=yes
 		  OutputDir={{Common.PublishPath}}
@@ -151,13 +150,12 @@ foreach (var (current, arch) in ((string, string)[])[("WindowsX32", "x32"), ("Wi
 		  Source: "{{stagingPath}}\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs
 
 		  [Icons]
-		  Name: "{group}\BPLE {{Common.BuildVersion}}"; Filename: "{app}\BPLE-{{Common.BuildVersion}}.exe"
-		  Name: "{group}\Uninstall BPLE {{Common.BuildVersion}}"; Filename: "{uninstallexe}"
 		  Name: "{autodesktop}\BPLE {{Common.BuildVersion}}"; Filename: "{app}\BPLE-{{Common.BuildVersion}}.exe"; Tasks: desktopicon
+		  Name: "{autoprograms}\BPLE {{Common.BuildVersion}}"; Filename: "{app}\BPLE-{{Common.BuildVersion}}.exe"
 
 		  [Tasks]
 		  Name: desktopicon; Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"
 		  """);
 
-    Environment.ExitCode += Common.RunCommand(isBinPath, [scriptPath]);
+	Environment.ExitCode += Common.RunCommand(isBinPath, [scriptPath]);
 }
