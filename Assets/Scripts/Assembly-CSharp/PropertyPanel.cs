@@ -29,15 +29,15 @@ public class PropertyPanel : INBehaviour
 		string text = ((INUnity.Language != SystemLanguage.Chinese) ? (versionType switch
 		{
 			0 => "Original", 
-			1 => "BPLE Mode-O", 
-			2 => "BPLE Mode-A", 
-			_ => "BPLE Mode-B", 
+			1 => "BPLE TV Mode-O", 
+			2 => "BPLE TV Mode-A", 
+			_ => "BPLE TV Mode-B", 
 		}) : (versionType switch
 		{
 			0 => "原版", 
-			1 => "新创O", 
-			2 => "新创A", 
-			_ => "新创B", 
+			1 => "新创O 科技版", 
+			2 => "新创A 科技版", 
+			_ => "新创B 科技版", 
 		}));
 		m_prefix = "\u3000";
 		m_versionText = FormatHeading1(text + " " + INUnity.VersionText);

@@ -322,9 +322,13 @@ public class INCommandManager : Singleton<INCommandManager>
 
 	private static IEnumerable<AssemblyReference> GetReferences()
 	{
+#if ENABLE_IL2CPP && !UNITY_EDITOR
+		return ScriptReferenceSet.LoadStagedReferences().ToList();
+#else
 		return from data in GetReferencePaths().Select(LoadFileWithMaybe)
 			where data.HasValue
 			select new AssemblyByteReference((byte[])data);
+#endif
 	}
 
 	private static IEnumerable<string> GetReferencePaths()

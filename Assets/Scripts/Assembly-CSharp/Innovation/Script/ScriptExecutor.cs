@@ -85,7 +85,7 @@ namespace Innovation.Script
 			IMethodSymbol? entryPoint = cSharpCompilation.GetEntryPoint(CancellationToken.None);
 			string metadataName = entryPoint.ContainingNamespace.MetadataName;
 			string metadataName2 = entryPoint.ContainingType.MetadataName;
-			string name = (string.IsNullOrEmpty(metadataName) ? metadataName2 : (metadataName + "." + metadataName2));
+			string name = string.IsNullOrEmpty(metadataName) ? metadataName2 : (metadataName + "." + metadataName2);
 			string metadataName3 = entryPoint.MetadataName;
 			Func<object[], Task<object>> func = (Func<object[], Task<object>>)assembly.GetType(name, throwOnError: true, ignoreCase: false).GetTypeInfo().GetDeclaredMethod(metadataName3)
 				.CreateDelegate(typeof(Func<object[], Task<object>>));
@@ -103,6 +103,9 @@ namespace Innovation.Script
 
 		private void InitializeAssemblyTable()
 		{
+#if ENABLE_IL2CPP && !UNITY_EDITOR
+			return;
+#else
 			ImmutableArray<AssemblyReference>.Enumerator enumerator = m_options.References.GetEnumerator();
 			while (enumerator.MoveNext())
 			{
@@ -113,6 +116,7 @@ namespace Innovation.Script
 					m_assemblyResolver.RegisterDependency(assembly);
 				}
 			}
+#endif
 		}
 
 		private IEnumerable<MetadataReference> GetReferences()

@@ -41,7 +41,8 @@ public class SingletonSpawner : MonoBehaviour
 		{
 			return;
 		}
-		Application.targetFrameRate = 60;
+		// God, no
+		// Application.targetFrameRate = 60;
 		foreach (GameObject commonSingleton in m_commonSingletons)
 		{
 			if (!GameObject.Find(commonSingleton.name))

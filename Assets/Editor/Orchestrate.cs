@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -21,7 +20,9 @@ public static class Orchestrate
 
 	public static readonly string QueuePath = Path.Combine(ProjectPath, "Temp", "BuildQueue.txt");
 
-	public static readonly bool UseIL2CPP = false;
+	public static readonly bool UseIL2CPP = true;
+
+	public static readonly ManagedStrippingLevel StrippingLevel = ManagedStrippingLevel.Low;
 
 	public enum Platform
 	{
@@ -87,7 +88,6 @@ public static class Orchestrate
 		File.WriteAllLines(QueuePath, new string[] { });
 	}
 
-	// https://discussions.unity.com/t/buildpipeline-buildplayer-wont-load-sysroot-toolchain-packages/826597/6
 	private static EditorApplication.CallbackFunction pendingBuild;
 
 	[InitializeOnLoadMethod]
@@ -147,6 +147,19 @@ public static class Orchestrate
 		ProcessQueuedBuilds();
 	}
 
+	[MenuItem("BPLE/Build/All Desktop")]
+	public static void BuildDesktop()
+	{
+		ClearQueue();
+		BundleForTarget(BuildTarget.StandaloneWindows);
+		PushQueue(Platform.WindowsX32);
+		BundleForTarget(BuildTarget.StandaloneWindows64);
+		PushQueue(Platform.WindowsX64);
+		BundleForTarget(BuildTarget.StandaloneLinux64);
+		PushQueue(Platform.LinuxX64);
+		ProcessQueuedBuilds();
+	}
+
 	[MenuItem("BPLE/Build/Android ARM")]
 	public static void BuildAndroidArm()
 	{
@@ -161,6 +174,16 @@ public static class Orchestrate
 	{
 		ClearQueue();
 		BundleForTarget(BuildTarget.Android);
+		PushQueue(Platform.AndroidIntel);
+		ProcessQueuedBuilds();
+	}
+
+	[MenuItem("BPLE/Build/All Android")]
+	public static void BuildAndroid()
+	{
+		ClearQueue();
+		BundleForTarget(BuildTarget.Android);
+		PushQueue(Platform.AndroidArm);
 		PushQueue(Platform.AndroidIntel);
 		ProcessQueuedBuilds();
 	}
@@ -280,17 +303,38 @@ public static class Orchestrate
 				break;
 		}
 
-		PlayerSettings.SetScriptingBackend(BuildPipeline.GetBuildTargetGroup(target),
+		BuildTargetGroup targetGroup = BuildPipeline.GetBuildTargetGroup(target);
+
+		PlayerSettings.SetScriptingBackend(targetGroup,
 			UseIL2CPP ? ScriptingImplementation.IL2CPP : ScriptingImplementation.Mono2x);
 
-		BuildReport report = BuildPipeline.BuildPlayer(options);
-		if (report.summary.result != BuildResult.Succeeded)
+		if (UseIL2CPP)
+			PlayerSettings.SetManagedStrippingLevel(targetGroup, StrippingLevel);
+
+		try
+		{
+			if (UseIL2CPP)
+			{
+				HybridCLRBuildSupport.PrepareForBuild(target);
+			}
+
+			BuildReport report = BuildPipeline.BuildPlayer(options);
+			if (report.summary.result != BuildResult.Succeeded)
+			{
+				throw new Exception($"Build failed with errors: {report.summary.totalErrors}:\n{report.steps}");
+			}
+
+			Debug.Log($"Built game: {options.locationPathName}");
+		}
+		catch
 		{
 			ClearQueue();
-			throw new Exception($"Build failed with errors: {report.summary.totalErrors}:\n{report.steps}");
+			throw;
 		}
-
-		Debug.Log($"Built game: {options.locationPathName}");
+		finally
+		{
+			HybridCLRBuildSupport.CleanStaging();
+		}
 
 		Directory.Delete(StreamPath, true);
 		File.Delete(StreamPath + ".meta");

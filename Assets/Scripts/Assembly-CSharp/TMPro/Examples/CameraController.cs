@@ -57,20 +57,24 @@ namespace TMPro.Examples
 
 		private float mouseWheel;
 
+		// Don't you think these should be removed? No references of these variables
+		// are found anywhere
 		private const string event_SmoothingValue = "Slider - Smoothing Value";
 
 		private const string event_FollowDistance = "Slider - Camera Zoom";
 
 		private void Awake()
 		{
-			if (QualitySettings.vSyncCount > 0)
-			{
-				Application.targetFrameRate = 60;
-			}
-			else
-			{
-				Application.targetFrameRate = -1;
-			}
+			QualitySettings.vSyncCount = 1;
+			// VSync already handles the job of capping the FPS dynamically
+			// if (QualitySettings.vSyncCount > 0)
+			// {
+			//	Application.targetFrameRate = 60;
+			// }
+			// else
+			// {
+			// 	Application.targetFrameRate = -1;
+			// }
 			if (Application.platform == RuntimePlatform.IPhonePlayer || Application.platform == RuntimePlatform.Android)
 			{
 				Input.simulateMouseWithTouches = false;
