@@ -50,10 +50,35 @@ namespace Innovation.Script
 		{
 			try
 			{
-				return File.Exists(path) ? File.ReadAllBytes(path) : null;
+				if (!path.Contains("://"))
+				{
+					return File.Exists(path) ? File.ReadAllBytes(path) : null;
+				}
+
+				using (UnityWebRequest request = UnityWebRequest.Get(path))
+				{
+					request.SendWebRequest();
+					System.Diagnostics.Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
+					while (!request.isDone)
+					{
+						if (stopwatch.ElapsedMilliseconds > 15000)
+						{
+							request.Abort();
+							Debug.LogWarning("Timed out reading '" + path + "'");
+							return null;
+						}
+					}
+					if (request.result != UnityWebRequest.Result.Success)
+					{
+						Debug.LogWarning("Could not read '" + path + "': " + request.error);
+						return null;
+					}
+					return request.downloadHandler.data;
+				}
 			}
-			catch
+			catch (Exception exception)
 			{
+				Debug.LogWarning("Could not read '" + path + "': " + exception.Message);
 				return null;
 			}
 		}
